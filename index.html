@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Brandon Pizarro Carbajal, PhD candidate in Chemical Engineering at USC: lipid nanodisc drug delivery, teaching and mentoring.">
+<title>Brandon Pizarro Carbajal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column with a two-part hero (identity + nanodisc cross-section), sections as label-left / content-right rows that stack on phones */
+:root {
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --ink: #15202b;
+  --muted: #58677a;
+  --line: #d9e0e7;
+  --accent: #a3123f;      /* doxorubicin red */
+  --belt: #2f5d7c;        /* scaffold protein */
+  --lipid: #b7c4d1;
+  --display: "Petrona", Georgia, "Times New Roman", serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f151c; --surface: #16202a; --ink: #e6ecf2; --muted: #98a6b6; --line: #273543;
+    --accent: #f0587f; --belt: #6ea4c8; --lipid: #3d4f61; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f151c; --surface: #16202a; --ink: #e6ecf2; --muted: #98a6b6; --line: #273543;
+  --accent: #f0587f; --belt: #6ea4c8; --lipid: #3d4f61; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; }
+.wrap { max-width: 960px; margin: 0 auto; padding-inline: 24px; padding-block: 0 64px; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+nav { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; padding-block: 22px; border-bottom: 1px solid var(--line); }
+nav .mark { font-family: var(--mono); font-size: 13px; letter-spacing: .06em; color: var(--muted); }
+nav ul { display: flex; flex-wrap: wrap; gap: 6px 20px; list-style: none; margin: 0; padding: 0; font-size: 14px; }
+nav a { color: var(--ink); text-decoration: none; }
+nav a:hover { color: var(--accent); }
+
+.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; align-items: center; padding-block: 56px 48px; }
+.hero h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2.3rem, 5.2vw, 3.6rem); line-height: 1.05; margin: 0 0 18px; text-wrap: balance; letter-spacing: -.01em; }
+.hero h1 span { display: block; font-style: italic; font-weight: 500; color: var(--muted); }
+.hero p.lede { font-size: 1.1rem; margin: 0 0 20px; max-width: 34em; }
+.status { display: inline-flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-family: var(--mono); font-size: 12.5px; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--muted); }
+.chip.on { border-color: var(--accent); color: var(--accent); }
+
+figure.disc { margin: 0; min-width: 0; }
+figure.disc svg { width: 100%; height: auto; display: block; }
+figure.disc figcaption { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 10px; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+figure.disc figcaption i { font-style: normal; display: inline-flex; align-items: center; gap: 6px; }
+figure.disc figcaption b { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+
+section { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 16px 40px; padding-block: 40px; border-top: 1px solid var(--line); }
+section > h2 { font-family: var(--mono); font-weight: 500; font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 6px 0 0; }
+section .body { min-width: 0; max-width: 42em; }
+section h3 { font-family: var(--display); font-weight: 600; font-size: 1.35rem; line-height: 1.25; margin: 0 0 10px; text-wrap: balance; }
+section p { margin: 0 0 14px; }
+.questions { display: grid; gap: 18px; margin-top: 22px; }
+.q { padding-left: 16px; border-left: 2px solid var(--line); }
+.q strong { display: block; font-family: var(--display); font-size: 1.08rem; font-weight: 600; margin-bottom: 4px; }
+.q p { margin: 0; color: var(--muted); }
+
+dl.rows { margin: 0; display: grid; gap: 0; }
+dl.rows > div { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 4px 20px; padding-block: 12px; border-bottom: 1px dashed var(--line); }
+dl.rows > div:last-child { border-bottom: 0; }
+dl.rows dt { font-family: var(--mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 2px; }
+dl.rows dd { margin: 0; }
+dl.rows dd b { font-weight: 600; }
+dl.rows dd small { display: block; color: var(--muted); font-size: 14px; }
+.next { color: var(--accent); }
+
+ul.plain { margin: 0; padding-left: 1.1em; display: grid; gap: 8px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+
+.contact { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 6px; }
+.email { font-family: var(--mono); font-size: 1.05rem; user-select: all; }
+button.copy { font: 500 13px var(--body); padding: 6px 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 6px; cursor: pointer; }
+button.copy:hover { border-color: var(--accent); color: var(--accent); }
+footer { padding-top: 28px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+
+@media (max-width: 720px) {
+  .wrap { padding-inline: 16px; }
+  .hero { grid-template-columns: 1fr; padding-block: 36px 32px; gap: 28px; }
+  section { grid-template-columns: 1fr; padding-block: 32px; }
+  dl.rows > div { grid-template-columns: 1fr; }
+}
+</style>
+<style>html{color-scheme:light dark} body{margin:0} img{max-width:100%}</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <nav>
+    <span class="mark">PIZARRO CARBAJAL · ChE</span>
+    <ul>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#mentoring">Mentoring</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <h1>Brandon Pizarro Carbajal <span>Chemical engineer &amp; educator</span></h1>
+      <p class="lede">PhD candidate in Chemical Engineering at the University of Southern California. I study lipid nanodiscs as drug carriers, and I'm seeking a faculty position starting in 2027.</p>
+      <div class="status">
+        <span class="chip on">On the faculty job market</span>
+        <span class="chip">PhD expected May 2027</span>
+        <span class="chip">AIChE 2026 · Minneapolis</span>
+      </div>
+    </div>
+    <figure class="disc" aria-label="Cross-section of a lipid nanodisc: a lipid bilayer held by a protein belt, with drug molecules in the bilayer core">
+      <svg id="disc" viewBox="0 0 400 190" role="img"></svg>
+      <figcaption>
+        <i><b style="background:var(--belt)"></b>MSP belt</i>
+        <i><b style="background:var(--lipid)"></b>DMPC bilayer</i>
+        <i><b style="background:var(--accent)"></b>drug cargo</i>
+        <i>~10–13 nm across</i>
+      </figcaption>
+    </figure>
+  </header>
+
+  <section id="research">
+    <h2>Research</h2>
+    <div class="body">
+      <h3>Nanodiscs as drug delivery vehicles</h3>
+      <p>Nanodiscs are small patches of lipid bilayer, about 10–13 nm across, held in solution by a belt of membrane scaffold protein (MSP). My dissertation work in Dr. Wade Zeno's lab at USC uses MSP1 and MSP1E3D1 nanodiscs built on DMPC bilayers. I study how small-molecule chemotherapeutics can be carried in that bilayer, and I test the resulting formulations for cytotoxicity in HeLa and SUM159 cancer cells.</p>
+      <div class="questions">
+        <div class="q">
+          <strong>Loading drugs into a carrier with no aqueous core</strong>
+          <p>Liposomal drugs like Doxil use ammonium sulfate or pH gradients to load doxorubicin into an internal water compartment. Nanodiscs have no such compartment, so I look at what actually controls how a drug partitions into a flat bilayer.</p>
+        </div>
+        <div class="q">
+          <strong>Choosing the drug to fit the carrier</strong>
+          <p>I screen anthracyclines by hydrophobicity, optical properties and activity against solid-tumor cell lines to find cargo that suits a bilayer-only carrier.</p>
+        </div>
+        <div class="q">
+          <strong>Research built for student teams</strong>
+          <p>I design projects that undergraduates and master's students can run and own, from nanodisc assembly and purification to cell assays.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="teaching">
+    <h2>Teaching</h2>
+    <div class="body">
+      <dl class="rows">
+        <div><dt>Spring 2027</dt><dd><b class="next">Instructor of record, CHE 447: Mass and Heat Transfer</b><small>USC · nominated by the department through the mentored teaching program</small></dd></div>
+        <div><dt>USC</dt><dd><b>Teaching assistant, Heat and Mass Transfer</b><small>Led discussion for 40 students and lectured in the professor's absence</small></dd></div>
+        <div><dt>UC Davis</dt><dd><b>Teaching assistant, Separations/Unit Operations and Heat Transfer</b><small>Office hours and review sessions for 60 students per course</small></dd></div>
+        <div><dt>Training</dt><dd><b>Future Faculty Teaching Institute</b><small>USC Center for Excellence in Teaching: evidence-based pedagogy, course design, assessment and inclusive teaching</small></dd></div>
+        <div><dt>Tutoring</dt><dd><b>Study Hut Tutoring</b><small>Chemistry, biology and math for high school students</small></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="mentoring">
+    <h2>Mentoring</h2>
+    <div class="body">
+      <ul class="plain">
+        <li>Mentored three Rio Hondo Community College students doing lab research at USC through the NSF-funded Transitions and Research Across Interfaces program.</li>
+        <li>Mentor undergraduate researchers in my lab; three have earned co-authorship.</li>
+        <li>Mentor students through SHPE on resumes, mock interviews and STEM career preparation.</li>
+        <li>First-generation college graduate and fluent in Spanish.</li>
+      </ul>
+      <div class="tags">
+        <span class="chip">AIChE</span><span class="chip">Biophysical Society</span><span class="chip">SACNAS</span><span class="chip">SHPE</span><span class="chip">Omega Chi Epsilon</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="body">
+      <dl class="rows">
+        <div><dt>2027 (expected)</dt><dd><b>Ph.D., Chemical Engineering</b><small>University of Southern California · Advisor: Dr. Wade Zeno</small></dd></div>
+        <div><dt>2022</dt><dd><b>M.S., Chemical Engineering</b><small>University of California, Davis</small></dd></div>
+        <div><dt>2019</dt><dd><b>B.S., Chemical Engineering</b><small>University of California, Irvine</small></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="body">
+      <p>CV, teaching materials and references are available on request.</p>
+      <div class="contact">
+        <span class="email" id="email">pizarroc@usc.edu</span>
+        <button class="copy" id="copyBtn" type="button">Copy email</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>Mork Family Department of Chemical Engineering and Materials Science · University of Southern California</footer>
+</div>
+
+<script>
+(function () {
+  const svg = document.getElementById('disc');
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (t, a) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); svg.appendChild(e); return e; };
+  const cy = 95, x0 = 70, x1 = 330, step = 13;
+  // lipid tails
+  for (let x = x0; x <= x1; x += step) {
+    el('line', { x1: x - 2, y1: cy - 34, x2: x - 2, y2: cy - 4, stroke: 'var(--lipid)', 'stroke-width': 2 });
+    el('line', { x1: x + 2, y1: cy - 34, x2: x + 2, y2: cy - 4, stroke: 'var(--lipid)', 'stroke-width': 2 });
+    el('line', { x1: x - 2, y1: cy + 4, x2: x - 2, y2: cy + 34, stroke: 'var(--lipid)', 'stroke-width': 2 });
+    el('line', { x1: x + 2, y1: cy + 4, x2: x + 2, y2: cy + 34, stroke: 'var(--lipid)', 'stroke-width': 2 });
+  }
+  // drug cargo in the core
+  [[118, -12], [170, 10], [222, -8], [268, 12], [300, -14]].forEach(([x, dy]) => {
+    el('rect', { x: x - 6, y: cy + dy - 6, width: 12, height: 12, rx: 2, fill: 'var(--accent)', transform: `rotate(45 ${x} ${cy + dy})` });
+  });
+  // lipid head groups
+  for (let x = x0; x <= x1; x += step) {
+    el('circle', { cx: x, cy: cy - 40, r: 6, fill: 'var(--lipid)' });
+    el('circle', { cx: x, cy: cy + 40, r: 6, fill: 'var(--lipid)' });
+  }
+  // MSP belt on both edges
+  el('rect', { x: 40, y: cy - 52, width: 22, height: 104, rx: 11, fill: 'var(--belt)' });
+  el('rect', { x: 338, y: cy - 52, width: 22, height: 104, rx: 11, fill: 'var(--belt)' });
+})();
+
+document.getElementById('copyBtn').addEventListener('click', function () {
+  const btn = this, text = document.getElementById('email').textContent;
+  const done = () => { btn.textContent = 'Copied'; setTimeout(() => btn.textContent = 'Copy email', 1600); };
+  const fallback = () => { const r = document.createRange(); r.selectNodeContents(document.getElementById('email')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selected, press Ctrl/Cmd+C'; };
+  try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+});
+</script>
+
+</body>
+</html>
